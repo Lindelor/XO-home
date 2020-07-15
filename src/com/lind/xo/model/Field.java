@@ -1,8 +1,8 @@
 package com.lind.xo.model;
 
 
-import com.lind.xo.model.exceptions.AlreadyOccupiedException;
 import com.lind.xo.model.exceptions.InvalidPointException;
+import com.lind.xo.model.exceptions.AlreadyOccupiedException;
 
 import java.awt.*;
 

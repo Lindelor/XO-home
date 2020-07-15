@@ -1,5 +1,7 @@
-package com.lind.xo.model;
+package com.lind.xo;
 
+import com.lind.xo.model.Figure;
+import com.lind.xo.model.Player;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
