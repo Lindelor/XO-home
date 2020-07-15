@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class WinnerControllerTest {
 
     @Test
-    public void getWinner() throws Exception{
+    public void getWinnerColumn() throws Exception {
 
         final Field field = new Field();
         final WinnerController winnerController = new WinnerController();
@@ -21,6 +21,41 @@ public class WinnerControllerTest {
             field.setFigure(new Point(2, i), Figure.X);
             assertEquals(Figure.X, winnerController.getWinner(field));
         }
-
     }
+        @Test
+        public void getWinnerRow() throws Exception{
+
+            final Field field = new Field();
+            final WinnerController winnerController = new WinnerController();
+            for (int i = 0; i < field.getSize(); i++) {
+                field.setFigure(new Point(i, 0), Figure.X);
+                field.setFigure(new Point(i, 1), Figure.X);
+                field.setFigure(new Point(i, 2), Figure.X);
+                assertEquals(Figure.X, winnerController.getWinner(field));
+            }
+        }
+
+        @Test
+        public void getWinnerDiagonal() throws Exception{
+
+            final Field field = new Field();
+            final WinnerController winnerController = new WinnerController();
+            field.setFigure(new Point(0, 0), Figure.X);
+            field.setFigure(new Point(1, 1), Figure.X);
+            field.setFigure(new Point(2, 2), Figure.X);
+            assertEquals(Figure.X, winnerController.getWinner(field));
+
+        }
+
+        @Test
+        public void getWinnerDiagonalReverse() throws Exception{
+
+            final Field field = new Field();
+            final WinnerController winnerController = new WinnerController();
+            field.setFigure(new Point(2, 0), Figure.X);
+            field.setFigure(new Point(1, 1), Figure.X);
+            field.setFigure(new Point(0, 2), Figure.X);
+            assertEquals(Figure.X, winnerController.getWinner(field));
+
+        }
 }

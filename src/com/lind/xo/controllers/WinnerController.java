@@ -18,7 +18,7 @@ public class WinnerController {
                     e.printStackTrace();
                 }
             }
-            if (getRow(field, i)) {
+            if (getColumn(field, i)) {
                 try {
                     return field.getFigure(new Point(i, 0));
                 } catch (InvalidPointException e) {
@@ -44,7 +44,7 @@ public class WinnerController {
             if (field.getFigure(new Point(0, i)) != null &&
                     field.getFigure(new Point(1, i)) != null &&
                     field.getFigure(new Point(2, i)) != null &&
-                    (field.getFigure(new Point(0,i)) ==
+                    (field.getFigure(new Point(0 ,i)) ==
                     field.getFigure(new Point(1, i)) &&
                     field.getFigure(new Point(1, i)) ==
                     field.getFigure(new Point(2, i)))) {
@@ -79,21 +79,32 @@ public class WinnerController {
             if (field.getFigure(new Point(0, 0)) != null &&
                     field.getFigure(new Point(1, 1)) != null &&
                     field.getFigure(new Point(2, 2)) != null &&
-                    field.getFigure(new Point(0, 2)) != null &&
-                    field.getFigure(new Point(2, 0)) != null &&
                     (field.getFigure(new Point(0, 0)) ==
                     field.getFigure(new Point(1, 1)) &&
                     field.getFigure(new Point(1, 1)) ==
-                    field.getFigure(new Point(2, 2))) ||
+                    field.getFigure(new Point(2, 2)))) {
+                return true;
+            }
+
+
+        } catch (InvalidPointException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if (field.getFigure(new Point(0, 2)) != null &&
+                    field.getFigure(new Point(2, 0)) != null &&
+                    field.getFigure(new Point(1, 1)) != null &&
                     (field.getFigure(new Point(2, 0)) ==
-                    field.getFigure(new Point(1, 1)) &&
-                    field.getFigure(new Point(1, 1)) ==
-                    field.getFigure(new Point(0, 2)))) {
+                     field.getFigure(new Point(1, 1)) &&
+                     field.getFigure(new Point(1, 1)) ==
+                     field.getFigure(new Point(0, 2)))) {
                 return true;
             }
         } catch (InvalidPointException e) {
             e.printStackTrace();
         }
+
         return false;
     }
 }
