@@ -22,18 +22,16 @@ public class CurrentMoveController {
     }
 
     private Figure countOfFigures(final Field field) throws InvalidPointException {
-        int countX = 0;
-        int countO = 0;
+        int countFigure = 0;
         for (int i = 0; i < field.getSize(); i++) {
             for (int j = 0; j < field.getSize(); j++) {
                 if (field.getFigure(new Point(i, j)) != null) {
-                    if (field.getFigure(new Point(i, j)) == X) countX++;
-                    else countO++;
+                    countFigure += 1;
                 }
             }
         }
-        if (countO + countX == 9) return null;
-        if (countO == countX) return X;
+        if (countFigure == 9) {return null;}
+        if ((countFigure % 2) == 0) {return X;}
         else return O;
     }
 
